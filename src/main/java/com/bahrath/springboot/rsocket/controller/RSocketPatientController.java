@@ -20,4 +20,11 @@ public class RSocketPatientController {
         return Mono.just(new ClinicalPatientData(90, "80/120"));
     }
 
+    @MessageMapping("patient-checkout")
+    public Mono<Void> fireAndForget(@RequestBody Patient patient) {
+        logger.info("Patient Checking out: "+patient);
+        logger.info("Billing Initiated");
+        return Mono.empty().then();
+    }
+
 }
